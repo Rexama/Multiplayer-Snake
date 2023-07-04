@@ -4,13 +4,16 @@ using UnityEngine;
 
 namespace _Code.Grid
 {
-    public class Grid : MonoBehaviour
+    public class Grid : Singleton<Grid>
     {
         [SerializeField] private int width;
         [SerializeField] private int height;
-        //[SerializeField] private GameObject obj;
+        [SerializeField] private float offset;
+        [SerializeField] private GameObject obj;
         
-        private List<List<Vector2>> _grid = new List<List<Vector2>>();
+        public List<List<Vector2>> grid = new List<List<Vector2>>();
+        
+        
 
         private void Start()
         {
@@ -27,13 +30,42 @@ namespace _Code.Grid
                 var newRow = new List<Vector2>();
                 for (var x = xPos; x < width + xPos; x++) 
                 {
-                    newRow.Add(new Vector2(x, y));
-                    //Instantiate(obj, new Vector3(x, y, 0), Quaternion.identity, transform);
+                    newRow.Add(new Vector2(x*offset, y*offset));
+                    Instantiate(obj, new Vector3(x*offset, y*offset, 0), Quaternion.identity, transform);
                 }
-                _grid.Insert(0,newRow);
+                grid.Insert(0,newRow);
             }
         }
         
-        public void GetNextStep()
+        public Vector2 GetRandomStartCord()
+        {
+            var randomX = UnityEngine.Random.Range(0, width-1);
+            var randomY = UnityEngine.Random.Range(0, height-1);
+            
+            Debug.Log(randomY + " " + randomX);
+
+            Debug.Log(grid.Count);
+            Debug.Log(grid[randomY][randomX]);
+            
+            return new Vector2(randomX, randomY);
+        }
+
+        public Vector2 GetNextCord(Vector2 direction, Vector2 cords)
+        {
+            if(direction == Vector2.down && cords.y < height - 1)
+                return new Vector2(cords.x, cords.y + 1);
+            
+            if(direction == Vector2.up && cords.y > 0)
+                return new Vector2(cords.x, cords.y - 1);
+            
+            if(direction == Vector2.left && cords.x > 0)
+                return new Vector2(cords.x - 1, cords.y);
+            
+            if (direction == Vector2.right && cords.x < width - 1)
+                return new Vector2(cords.x + 1, cords.y);
+            
+            else
+                return Vector2.negativeInfinity;
+        }
     }
 }

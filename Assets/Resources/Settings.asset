@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af703ba1acd343d788f61b6bd2c10e38, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  stepTime: 0.5
+  stepTime: 0.2
+  offset: 0

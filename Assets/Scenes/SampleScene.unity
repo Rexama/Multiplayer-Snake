@@ -424,7 +424,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 35
   height: 20
-  tilePrefab: {fileID: 1266014119580012645, guid: e3e4aaa39581cf442add1e7ffc3e6843, type: 3}
+  offset: 0.5
+  obj: {fileID: 1266014119580012645, guid: e3e4aaa39581cf442add1e7ffc3e6843, type: 3}
 --- !u!4 &75807647
 Transform:
   m_ObjectHideFlags: 0
