@@ -424,9 +424,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 35
   height: 20
+<<<<<<< HEAD
   offset: 0.5
   obj: {fileID: 1266014119580012645, guid: e3e4aaa39581cf442add1e7ffc3e6843, type: 3}
   wall: {fileID: 1572617760971815918, guid: f01504fb50f99be4ba6ab92de6a928fe, type: 3}
+=======
+  tilePrefab: {fileID: 1266014119580012645, guid: e3e4aaa39581cf442add1e7ffc3e6843, type: 3}
+>>>>>>> parent of 71d84b8 (movement of snake done)
 --- !u!4 &75807647
 Transform:
   m_ObjectHideFlags: 0
