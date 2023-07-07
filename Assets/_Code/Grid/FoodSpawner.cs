@@ -9,6 +9,15 @@ namespace _Code.Grid
         [SerializeField] GameObject foodPrefab;
         
         private Grid _grid;
+        
+        //singleton
+        public static FoodSpawner Instance { get; private set; }
+        private void OnEnable()
+        {
+            if (Instance != null && Instance != this) Destroy(gameObject);
+            else Instance = this;
+        }
+        
 
         private void Awake()
         {
@@ -27,7 +36,7 @@ namespace _Code.Grid
             if (Input.GetKeyDown(KeyCode.F)) SpawnFood();
         }
 
-        private void SpawnFood()
+        public void SpawnFood()
         {
             var randomCord = _grid.GetRandomCord();
             var food = Instantiate(foodPrefab, _grid.grid[(int)randomCord.y][(int)randomCord.x], Quaternion.identity);
