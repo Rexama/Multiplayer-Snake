@@ -15,7 +15,12 @@ namespace _Code.Player
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-
+            Debug.Log("Enter");
+            if(col.CompareTag("Food"))
+            {
+                Destroy(col.gameObject);
+                _playerHead.AddTail();
+            }
             if(col.CompareTag("PlayerTail"))
             {
                 

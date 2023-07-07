@@ -12,6 +12,7 @@ namespace _Code.Player
         
         public void PrepareTail(PlayerTail frontTail)
         {
+            Debug.Log("Prepare"+frontTail.name);
             FrontTail = frontTail;
             CurrentPosition = FrontTail.PrevPosition;
             transform.position = CurrentPosition;
@@ -20,6 +21,7 @@ namespace _Code.Player
 
         public void MoveTail()
         {
+            Debug.Log("Move"+FrontTail.name);
             PrevPosition = CurrentPosition;
             CurrentPosition = FrontTail.PrevPosition;
             transform.position = CurrentPosition;
