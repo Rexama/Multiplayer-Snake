@@ -1,4 +1,5 @@
-﻿using Unity.Netcode;
+﻿using System;
+using Unity.Netcode;
 using UnityEngine;
 
 namespace _Code.Player
@@ -10,12 +11,19 @@ namespace _Code.Player
         protected Vector3 CurrentPosition;
         protected Vector3 PrevPosition;
         
+        private SpriteRenderer _spriteRenderer;
+
+        private void Awake()
+        {
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
         public void PrepareTail(PlayerTail frontTail)
         {
             FrontTail = frontTail;
             CurrentPosition = FrontTail.PrevPosition;
             transform.position = CurrentPosition;
-
+            _spriteRenderer.color = OwnerClientId == 0 ? Color.blue : Color.red;
         }
 
         public void MoveTail()
